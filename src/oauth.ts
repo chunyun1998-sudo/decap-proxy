@@ -20,7 +20,7 @@ export class OAuthClient {
 		const { tokenHost, authorizePath } = clientConfig.target;
 		const { redirect_uri, scope, state } = options;
 
-		return `${tokenHost}${authorizePath}?response_type=code&client_id=${clientConfig.id}&redirect_uri=${redirect_uri}&scope=${scope}&state=${state}`;
+		return `${tokenHost}${authorizePath}?response_type=code&client_id=${clientConfig.id}&redirect_uri=${encodeURIComponent(redirect_uri)}&scope=${encodeURIComponent(scope)}&state=${state}`;
 	}
 
 	async getToken(options: { code: string; redirect_uri: string }) {

@@ -37,7 +37,7 @@ const handleAuth = async (url: URL, env: Env) => {
 
 	const oauth2 = createOAuth(env);
 	const authorizationUri = oauth2.authorizeURL({
-		redirect_uri: `https://${url.hostname}/callback?provider=github`,
+		redirect_uri: `https://${url.hostname}/callback`,
 		scope: repoScope,
 		state: randomHex(4), // 4 bytes -> 8 hex chars
 	});
@@ -72,11 +72,6 @@ const callbackScriptResponse = (status: string, token: string) => {
 };
 
 const handleCallback = async (url: URL, env: Env) => {
-	const provider = url.searchParams.get('provider');
-	if (provider !== 'github') {
-		return new Response('Invalid provider', { status: 400 });
-	}
-
 	const code = url.searchParams.get('code');
 	if (!code) {
 		return new Response('Missing code', { status: 400 });
@@ -85,7 +80,7 @@ const handleCallback = async (url: URL, env: Env) => {
 	const oauth2 = createOAuth(env);
 	const accessToken = await oauth2.getToken({
 		code,
-		redirect_uri: `https://${url.hostname}/callback?provider=github`,
+		redirect_uri: `https://${url.hostname}/callback`,
 	});
 	return callbackScriptResponse('success', accessToken);
 };

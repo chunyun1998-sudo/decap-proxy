@@ -7,16 +7,12 @@
 		"deploy": "wrangler deploy",
 		"dev": "wrangler dev",
 		"start": "wrangler dev",
-		"test": "vitest",
-		"test:debug": "yarn test --run --disableConsoleIntercept",
 		"cf-typegen": "wrangler types"
 	},
 	"devDependencies": {
-		"@cloudflare/vitest-pool-workers": "^0.16.15",
 		"@cloudflare/workers-types": "^4.20260613.1",
 		"typescript": "^5.9.3",
-		"vitest": "~4.1.0",
 		"wrangler": "^4.59.1"
 	},
-	"dependencies": {}
+	"packageManager": "yarn@4.9.1+sha512.f95ce356460e05be48d66401c1ae64ef84d163dd689964962c6888a9810865e39097a5e9de748876c2e0bf89b232d583c33982773e9903ae7a76257270986538"
 }

@@ -1,0 +1,8 @@
+# Cloudflare Worker 配置（由 wrangler.toml.sample 精简而来）
+compatibility_date = "2025-11-17"
+main = "src/index.ts"
+name = "decap-proxy"
+
+# 网站源仓库为公开仓库，保持 0；私有仓库改为 1
+[vars]
+GITHUB_REPO_PRIVATE = "0"
